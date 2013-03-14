@@ -1,0 +1,272 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>CareCenter</groupId>
+  <artifactId>CareCenter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+    <springVersion>3.2.1.RELEASE</springVersion>
+    <springSecurityVersion>3.1.3.RELEASE</springSecurityVersion>
+    <apacheTilesVersion>2.2.1</apacheTilesVersion>
+  </properties>
+  
+  <dependencies>
+      
+      
+      <!--  spring web-mvc -->
+      <dependency>
+      	<groupId>org.springframework</groupId>
+      	<artifactId>spring-webmvc</artifactId>
+      	<version>${springVersion}</version> 
+      </dependency>
+      <dependency>
+      	<groupId>org.springframework</groupId>
+      	<artifactId>spring-web</artifactId>
+      	<version>${springVersion}</version> 
+      </dependency>
+      
+     
+      
+      
+      <!--  spring security -->
+	  <dependency>
+	  	<groupId>org.springframework.security</groupId> 
+	  	<artifactId>spring-security-core</artifactId> 
+	  	<version>${springSecurityVersion}</version>
+	  	<exclusions>
+	  		<exclusion>
+	  			<artifactId>spring-asm</artifactId>
+	  			<groupId>org.springframework</groupId>
+	  		</exclusion>
+	  		<exclusion>
+	  			<artifactId>spring-context</artifactId>
+	  			<groupId>org.springframework</groupId>
+	  		</exclusion>
+	  	</exclusions>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>3.2.1.RELEASE</version>
+	  </dependency>
+	  
+	  <dependency>
+	  	<groupId>org.springframework.security</groupId> 
+	  	<artifactId>spring-security-openid</artifactId> 
+	  	<version>${springSecurityVersion}</version>
+	  	<exclusions>
+	  		<exclusion>
+	  			<artifactId>spring-context</artifactId>
+	  			<groupId>org.springframework</groupId>
+	  		</exclusion>
+	  	</exclusions>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.springframework.security</groupId> 
+	  	<artifactId>spring-security-taglibs</artifactId> 
+	  	<version>${springSecurityVersion}</version>
+	  	<exclusions>
+	  		<exclusion>
+	  			<artifactId>spring-context</artifactId>
+	  			<groupId>org.springframework</groupId>
+	  		</exclusion>
+	  	</exclusions>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.springframework.security</groupId> 
+	  	<artifactId>spring-security-config</artifactId> 
+	  	<version>${springSecurityVersion}</version>
+	  	<exclusions>
+	  		<exclusion>
+	  			<artifactId>spring-context</artifactId>
+	  			<groupId>org.springframework</groupId>
+	  		</exclusion>
+	  	</exclusions>
+	  </dependency>
+	  
+	   <!--  spring orm -->
+	  
+	  <dependency>
+	  	<groupId>org.eclipse.persistence</groupId> 
+	  	<artifactId>javax.persistence</artifactId> 
+	  	<version>2.0.0</version>
+	  </dependency>
+	  
+	  <dependency>
+	  	<groupId>org.springframework</groupId> 
+	  	<artifactId>spring-orm</artifactId> 
+	  	<version>${springVersion}</version>
+	  	<exclusions>
+	  		<exclusion>
+	  			<groupId>org.eclipse.persistence</groupId>
+	  		</exclusion>
+	  		<exclusion>
+	  			<artifactId>hibernate-annotations</artifactId>
+	  		</exclusion>
+	  		<exclusion>
+	  			<artifactId>hibernate-commons-annotations</artifactId>
+	  		</exclusion>
+	  	</exclusions>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${springVersion}</version>
+	  </dependency>
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${springVersion}</version>
+	  </dependency>
+	  
+	  
+	  <!--  jstl --> 
+	  <dependency>
+	  	<groupId>jstl</groupId> 
+	  	<artifactId>jstl</artifactId> 
+	  	<version>1.2</version>
+	  </dependency>
+	  
+	  <dependency>
+	  	<groupId>taglibs</groupId> 
+	  	<artifactId>standard</artifactId> 
+	  	<version>1.1.2</version>
+	  </dependency>
+	   
+	  <!--  apache tiles -->
+	  <dependency>
+	  	<groupId>org.apache.tiles</groupId> 
+	  	<artifactId>tiles-core</artifactId> 
+	  	<version>${apacheTilesVersion}</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.apache.tiles</groupId> 
+	  	<artifactId>tiles-jsp</artifactId> 
+	  	<version>${apacheTilesVersion}</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.apache.tiles</groupId> 
+	  	<artifactId>tiles-api</artifactId> 
+	  	<version>${apacheTilesVersion}</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.apache.tiles</groupId> 
+	  	<artifactId>tiles-servlet</artifactId> 
+	  	<version>${apacheTilesVersion}</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.apache.tiles</groupId> 
+	  	<artifactId>tiles-template</artifactId> 
+	  	<version>${apacheTilesVersion}</version>
+	  </dependency>
+
+
+	  <!--  utils -->
+	  <dependency>
+	  	<groupId>commons-beanutils</groupId> 
+	  	<artifactId>commons-beanutils</artifactId> 
+	  	<version>1.8.3</version>
+	  	<exclusions>
+	  		<exclusion>
+	  			<groupId>commons-collections</groupId>
+	  		</exclusion>
+	  	</exclusions>
+	  </dependency>
+	  <dependency>
+	  	<groupId>commons-digester</groupId> 
+	  	<artifactId>commons-digester</artifactId> 
+	  	<version>2.1</version>
+	  </dependency>
+	  <dependency>
+		<groupId>commons-collections</groupId>
+		<artifactId>commons-collections</artifactId>
+		<version>3.2.1</version>
+	  </dependency>
+	   
+	  
+	  
+	  <!--  log -->
+	  <!-- <dependency org="log4j" name="log4j" rev="1.2.13"/>
+	  <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.4.2"/>
+	  <dependency org="org.slf4j" name="slf4j-api" rev="1.5.8"/> -->
+	  <dependency>
+	  	<groupId>log4j</groupId> 
+	  	<artifactId>log4j</artifactId> 
+	  	<version>1.2.13</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.slf4j</groupId> 
+	  	<artifactId>slf4j-log4j12</artifactId> 
+	  	<version>1.4.2</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>org.slf4j</groupId> 
+	  	<artifactId>slf4j-api</artifactId> 
+	  	<version>1.5.8</version>
+	  </dependency>
+	  
+	  
+	  <!--  sqlite jdbc -->
+	  <!--  <dependency org="org.xerial" name="sqlite-jdbc" rev="3.7.2"/> -->
+
+	  <dependency>
+	  	<groupId>mysql</groupId> 
+	  	<artifactId>mysql-connector-java</artifactId> 
+	  	<version>5.1.10</version>
+	  </dependency>
+	  
+	  	  
+	  <!--  hibernate -->
+	  <dependency>
+	  	<groupId>org.hibernate</groupId> 
+	  	<artifactId>hibernate-core</artifactId> 
+	  	<version>4.1.10.Final</version>
+	  </dependency>
+	  
+	  
+	  
+	  <!--  data source -->
+	  <dependency>
+	  	<groupId>commons-dbcp</groupId> 
+	  	<artifactId>commons-dbcp</artifactId> 
+	  	<version>20030825.184428</version>
+	  </dependency>
+	  <dependency>
+	  	<groupId>commons-pool</groupId> 
+	  	<artifactId>commons-pool</artifactId> 
+	  	<version>20030825.183949</version>
+	  </dependency>
+	  
+	  <!-- jackson -->
+	  <dependency>
+	  	<groupId>org.codehaus.jackson</groupId> 
+	  	<artifactId>jackson-jaxrs</artifactId> 
+	  	<version>1.9.9</version>
+	  </dependency>
+	  
+	  
+	  <!--  javax validation -->
+	  <!--<dependency>
+	  	<groupId>javax.validation</groupId> 
+	  	<artifactId>validation-api</artifactId> 
+	  	<version>1.0.0.GA</version>
+	  </dependency>-->
+	  
+	  <dependency>
+	  	<groupId>org.hibernate</groupId> 
+	  	<artifactId>hibernate-validator-annotation-processor</artifactId> 
+	  	<version>4.3.1.Final</version>
+	  </dependency>
+	  
+	  <!--
+	  <exclude name="servlet-api"/>
+	  <exclude name="jsp-api"/>
+	  <exclude name="ejb3-persistence"/>
+	  <exclude name="javax.persistence"/>
+	  <exclude name="geronimo-jpa_3.0_spec"/>
+	  -->
+	    	  	     
+	</dependencies>
+</project>

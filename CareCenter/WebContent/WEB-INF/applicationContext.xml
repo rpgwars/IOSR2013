@@ -15,7 +15,6 @@
         http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-    
 
 <bean id="propertyConfigurer"
     	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
@@ -45,14 +44,9 @@
 	</bean>
 	
 	<tx:annotation-driven transaction-manager="transactionManager"/>
-	
-						   
 	<context:component-scan base-package="pl.agh.edu.carecenter.server.dao"/>
 	<context:component-scan base-package="pl.agh.edu.carecenter.server.service"/>
-	
 
-	
-	
 </beans>
     
     

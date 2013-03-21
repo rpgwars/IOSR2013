@@ -5,21 +5,17 @@
 <tiles-definitions>
 
     <definition name="mainTemplate"
-        template="/WEB-INF/jsp/template/mainLayout.jsp">
+        template="/WEB-INF/jsp/template/layout/mainLayout.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/jsp/template/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/jsp/template/botmenu.jsp" />
+        <put-attribute name="header" value="/WEB-INF/jsp/template/general/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/template/general/botmenu.jsp" />
         <put-attribute name="body" value="" />
-    </definition>
-    
-    <definition name="simpleLayout"
-       template="/WEB-INF/jsp/template/simpleLayout.jsp">
-       <put-attribute name="title" value="" />
-       <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/template/general/footer.jsp" />
     </definition>
     
     <definition name="login" extends="mainTemplate">
-        <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/login.jsp" />
     </definition>
  
 </tiles-definitions>

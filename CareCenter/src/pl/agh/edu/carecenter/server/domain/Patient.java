@@ -16,16 +16,6 @@ import javax.persistence.Table;
 public class Patient extends Account{
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", fetch = FetchType.LAZY, targetEntity = Report.class)
-	private List<Report> reportList = new ArrayList<Report>();
-	
-	public List<Report> getReportList() {
-		return reportList;
-	}
-
-	public void setReportList(List<Report> reportList) {
-		this.reportList = reportList;
-	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", fetch = FetchType.LAZY, targetEntity = Alarm.class)
 	private List<Alarm> alarmList = new ArrayList<Alarm>();
@@ -38,15 +28,15 @@ public class Patient extends Account{
 		this.alarmList = alarmList;
 	}
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", fetch = FetchType.LAZY, targetEntity = CarePlan.class)
-	private List<CarePlan> carePlanList = new ArrayList<CarePlan>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", fetch = FetchType.LAZY, targetEntity = PatientCarePlan.class)
+	private List<PatientCarePlan> patientCarePlanList = new ArrayList<PatientCarePlan>();
 	
-	public List<CarePlan> getCarePlanList() {
-		return carePlanList;
+	public List<PatientCarePlan> getPatientCarePlanList() {
+		return patientCarePlanList;
 	}
 
-	public void setCarePlanList(List<CarePlan> carePlanList) {
-		this.carePlanList = carePlanList;
+	public void setPatientCarePlanList(List<PatientCarePlan> patientCarePlanList) {
+		this.patientCarePlanList = patientCarePlanList;
 	}
 
 	@Basic

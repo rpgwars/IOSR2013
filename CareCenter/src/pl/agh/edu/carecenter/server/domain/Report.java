@@ -32,15 +32,15 @@ public class Report {
 	}
 
 
-	@ManyToOne(targetEntity = Patient.class, fetch = FetchType.EAGER)
-	private Patient patient; 
+	@ManyToOne(targetEntity = PatientCarePlan.class, fetch = FetchType.EAGER)
+	private PatientCarePlan patientCarePlan; 
 
-	public Patient getPatient() {
-		return patient;
+	public PatientCarePlan getPatientCarePlan() {
+		return patientCarePlan;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setPatientCarePlan(PatientCarePlan patientCarePlan) {
+		this.patientCarePlan = patientCarePlan;
 	}
 
 

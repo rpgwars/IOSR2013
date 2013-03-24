@@ -5,7 +5,7 @@
     
     <hibernate-configuration>
     	<session-factory>
-    		<property name="hibernate.hbm2ddl.auto">update</property>
+    		<property name="hibernate.hbm2ddl.auto">create</property>
     		
     		<mapping class="pl.agh.edu.carecenter.server.domain.TestDomainObject"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Account"/>
@@ -19,6 +19,7 @@
     		<mapping class="pl.agh.edu.carecenter.server.domain.Doctor"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Patient"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Report"/>
+    		<mapping class="pl.agh.edu.carecenter.server.domain.PatientCarePlan"/>
     		
     	</session-factory>
     </hibernate-configuration>

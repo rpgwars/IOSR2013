@@ -31,15 +31,15 @@ public class CarePlan {
 		this.activityCarePlanList = activityCarePlanList;
 	}
 
-	@ManyToOne(targetEntity = Patient.class, fetch = FetchType.EAGER)
-	private Patient patient;
-
-	public Patient getPatient() {
-		return patient;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "carePlan", fetch = FetchType.LAZY, targetEntity = PatientCarePlan.class)
+	private List<PatientCarePlan> patientCarePlanList; 
+	
+	public List<PatientCarePlan> getPatientCarePlanList() {
+		return patientCarePlanList;
 	}
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
+	public void setPatientCarePlanList(List<PatientCarePlan> patientCarePlanList) {
+		this.patientCarePlanList = patientCarePlanList;
 	}
 
 	@Id

@@ -2,6 +2,7 @@ package pl.agh.edu.carecenter.server.domain;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -97,7 +98,18 @@ public class Account {
 		this.password = password;
 	} 
 	
+	@Basic
+	private Date birthDate;
 	
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
 	@Transient
 	private String repeatedPassword;
 

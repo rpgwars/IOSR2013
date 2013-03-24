@@ -10,7 +10,9 @@
     <title>
 
     </title>
-
+	<%
+	 String pathToCss=request.getServerName();
+	%>
     <link rel="stylesheet" href="<spring:theme code="normalize-css"/>" type="text/css">
     <link rel="stylesheet" href="<spring:theme code="main-css"/>" type="text/css"/>
 </head>

@@ -17,5 +17,10 @@
         <put-attribute name="menu" value="" />
         <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/login.jsp" />
     </definition>
+    
+    <definition name="addDoctor" extends="mainTemplate">
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/addDoctor.jsp" />
+    </definition>
  
 </tiles-definitions>

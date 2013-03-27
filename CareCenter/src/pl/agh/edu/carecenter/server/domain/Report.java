@@ -20,15 +20,15 @@ import javax.persistence.Table;
 public class Report {
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "report", fetch = FetchType.LAZY, targetEntity = ActivityReport.class)
-	private List<ActivityReport> activityReportList = new ArrayList<ActivityReport>();
+	@ManyToOne(targetEntity = Activity.class, fetch = FetchType.EAGER)
+	private Activity activity; 
 
-	public List<ActivityReport> getActivityReportList() {
-		return activityReportList;
+	public Activity getActivity() {
+		return activity;
 	}
 
-	public void setActivityReportList(List<ActivityReport> activityReportList) {
-		this.activityReportList = activityReportList;
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 
 
@@ -79,6 +79,19 @@ public class Report {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+	
+	@Basic
+	private Integer done;
+
+	public Integer getDone() {
+		return done;
+	}
+
+	public void setDone(Integer done) {
+		this.done = done;
+	}
+	
+	
 	
 	
 	

@@ -13,13 +13,13 @@
     		<mapping class="pl.agh.edu.carecenter.server.domain.Activity"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.ActivityCarePlan"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.ActivityCategory"/>
-    		<mapping class="pl.agh.edu.carecenter.server.domain.ActivityReport"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Alarm"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.CarePlan"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Doctor"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Patient"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Report"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.PatientCarePlan"/>
+    		<mapping class="pl.agh.edu.carecenter.server.domain.Group"/>
     		
     	</session-factory>
     </hibernate-configuration>

@@ -19,15 +19,15 @@ import javax.persistence.Table;
 public class Activity {
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "activity", fetch = FetchType.LAZY, targetEntity = ActivityReport.class)
-	private List<ActivityReport> activityReportList = new ArrayList<ActivityReport>();
-	
-	public List<ActivityReport> getActivityReportList() {
-		return activityReportList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "activity", fetch = FetchType.LAZY, targetEntity = Report.class)
+	private List<Report> reportList = new ArrayList<Report>();
+
+	public List<Report> getReportList() {
+		return reportList;
 	}
 
-	public void setActivityReportList(List<ActivityReport> activityReportList) {
-		this.activityReportList = activityReportList;
+	public void setReportList(List<Report> reportList) {
+		this.reportList = reportList;
 	}
 
 

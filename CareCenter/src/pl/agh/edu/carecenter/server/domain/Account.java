@@ -22,8 +22,19 @@ import javax.persistence.Transient;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Account {
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY, targetEntity = Group.class)
+	private List<Group> groupList = new ArrayList<Group>();
+	
+	public List<Group> getGroupList() {
+		return groupList;
+	}
+
+	public void setGroupList(List<Group> groupList) {
+		this.groupList = groupList;
+	}
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY, targetEntity = AccountRole.class)
-	List<AccountRole> accountRole = new ArrayList<AccountRole>();
+	private List<AccountRole> accountRole = new ArrayList<AccountRole>();
 	
 	public List<AccountRole> getAccountRole() {
 		return accountRole;

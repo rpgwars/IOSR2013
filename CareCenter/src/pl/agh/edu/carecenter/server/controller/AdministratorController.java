@@ -52,6 +52,13 @@ public class AdministratorController {
 		ModelAndView mav = new ModelAndView("addDoctor");
 		if(!doctor.getPassword().equals(doctor.getRepeatedPassword()))
 			result.addError(new FieldError("doctor","repeatedPassword","passwords are diffrent"));
+		
+		if(result.hasErrors()){
+			mav.addObject("doctor", doctor);
+			mav.addObject("doctorList", accountService.listDoctors());
+			mav.addObject("degreeList",doctorService.getDegreeList());
+			return mav;
+		}
 		else{
 
 			try{
@@ -60,19 +67,15 @@ public class AdministratorController {
 			}
 			catch(AccountAlreadyExists exception){
 				result.addError(new FieldError("doctor","email","email already registered"));
+				mav.addObject("doctor", doctor);
+				mav.addObject("doctorList", accountService.listDoctors());
+				mav.addObject("degreeList",doctorService.getDegreeList());
+				return mav;
 			}
 
 			
 		}
-		
-		if(result.hasErrors()){
-			mav.addObject("doctor", doctor);
-			mav.addObject("doctorList", accountService.listDoctors());
-			mav.addObject("degreeList",doctorService.getDegreeList());
-			return mav;
-		}
-		
-		
+					
 		mav.setViewName("redirect:/administration/addDoctor.html");
 		return mav; 
 		 

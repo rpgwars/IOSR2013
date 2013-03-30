@@ -2,8 +2,9 @@ package pl.agh.edu.carecenter.server.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,21 +16,19 @@ import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
 
 
 @Repository
-public class AccountDAOImpl implements AccountDAO{
+public class AccountDAOImpl extends GenericDAOImpl<Account> implements AccountDAO{
 	
 	@Autowired
-	private SessionFactory sessionFactory; 
+	private SessionFactory sessionFactory;
 	
 	@Override
 	@Transactional(readOnly = true)
 	public Account findAccount(String login) throws AccountNotFound {
 		
-		String command = "from Account where email = :login";
-		
-		Query query = sessionFactory.getCurrentSession().createQuery(command);
-		query.setParameter("login", login);
-		
-		Account result = (Account)query.uniqueResult();  
+		Criteria accountCriteria = sessionFactory.getCurrentSession().createCriteria(Account.class);
+		accountCriteria.add(Restrictions.eq("email", login));
+
+		Account result = (Account) accountCriteria.uniqueResult();  
 				
 		if(result == null)
 			throw new AccountNotFound();
@@ -44,7 +43,7 @@ public class AccountDAOImpl implements AccountDAO{
 		try {
 			findAccount(account.getEmail());
 		} catch (AccountNotFound e) {
-			sessionFactory.getCurrentSession().save(account);
+			super.save(account);
 			return; 
 		}
 		
@@ -53,11 +52,11 @@ public class AccountDAOImpl implements AccountDAO{
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public List<Doctor> listDoctors() {
-		String hqlQuery = "from Doctor";
-		Query query = sessionFactory.getCurrentSession().createQuery(hqlQuery);
-		return query.list();
+		
+		Criteria doctorListCriteria = sessionFactory.getCurrentSession().createCriteria(Doctor.class);
+		return doctorListCriteria.list();
 	}
 
 }

@@ -22,7 +22,7 @@ import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
 @Service
 public class AccountServiceImpl implements AccountService, UserDetailsService{
 
-	@Autowired
+	@Autowired 
 	private AccountDAO accountDao; 
 	
 	

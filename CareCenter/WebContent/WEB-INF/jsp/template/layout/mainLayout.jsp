@@ -4,18 +4,12 @@
 <!DOCTYPE html>
 <html>
 	<tiles:insertAttribute name="header"/>
-
-	<body>
-		<div style="float: right;">
-			<%String logoutLink = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/" +"logout.html";%>
-			<a href="<%=logoutLink %>">logout</a>
-		</div>
+	<body class="<tiles:insertAttribute name="bodyClass"/>">
+        <tiles:insertAttribute name="navBar"/>
 		<div class="contentWrapper">
 			<tiles:insertAttribute name="body"/>
 			<tiles:insertAttribute name="rightmenu"/>
 		</div>
-	
-		<tiles:insertAttribute name="menu"/>
 		<tiles:insertAttribute name="footer"/>
 	</body>
 </html>

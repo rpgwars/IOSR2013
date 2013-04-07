@@ -1,10 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
-
 <div class="mainContent">
-
-	
 	<div>
 		<form:form method="post" commandName="category">
 			<div>

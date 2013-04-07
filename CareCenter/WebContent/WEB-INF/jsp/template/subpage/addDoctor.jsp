@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 
-<body>
+<div class="mainContent">
 
 	
 	<div>
@@ -58,32 +58,63 @@
 		  			</li>
   				</ul>
 			</div>
+			<div>
+				<ul>
+					<li><form:label path="groupId">Group ID:</form:label></li>
+					<li><form:password path="groupId"></form:password></li>
+					<li><form:errors path="groupId"></form:errors></li>
+				</ul>
+			</div>
 			<hr>
 			<input type="submit" value="Register"/>
 		</form:form>
 	</div>
 	<hr>
-	<div>
-		<h2>Registered doctors:</h2>
-		<br>
-		<c:choose>
-			<c:when test="${not empty doctorList}">
-			<table>
-			<c:forEach items="${doctorList}" var="doctor" varStatus="status">
-				<tr>
-				
-	 				<td>${status.index}</td>
-	 				<td>${doctor.name}</td>
-	 				<td>${doctor.surname}</td>
-	 				<td>${teacher.email }</td>
-
-	 			</tr>
-			</c:forEach>
-			</table>
-			</c:when>
-			<c:otherwise>
-				<h1>-----------</h1>
-			</c:otherwise>
-		</c:choose>
+	<div style="width: 500; overflow: hidden;">
+		<div style="float: left; width: 500px">
+			<h2>Registered doctors:</h2>
+			<br>
+			<c:choose>
+				<c:when test="${not empty doctorList}">
+				<table>
+				<c:forEach items="${doctorList}" var="doctor" varStatus="status">
+					<tr>
+					
+		 				<td>${status.index}</td>
+		 				<td>${doctor.name}</td>
+		 				<td>${doctor.surname}</td>
+		 				<td>${teacher.email }</td>
+	
+		 			</tr>
+				</c:forEach>
+				</table>
+				</c:when>
+				<c:otherwise>
+					<h1>-----------</h1>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<div style="width: 500px; overflow: hidden;">
+			<h2>Registered groups:</h2>
+			<br>
+			<c:choose>
+				<c:when test="${not empty groupList}">
+				<table>
+				<c:forEach items="${groupList}" var="group" varStatus="status">
+					<tr>
+					
+		 				<td>${group.id}</td>
+		 				<td>${group.groupName}</td>
+		 				
+	
+		 			</tr>
+				</c:forEach>
+				</table>
+				</c:when>
+				<c:otherwise>
+					<h1>-----------</h1>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</div>
-</body>
+</div>

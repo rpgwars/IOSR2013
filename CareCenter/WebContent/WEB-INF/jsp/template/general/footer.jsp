@@ -7,5 +7,3 @@
     <script src="<spring:theme code="modernizr"/>"></script>
     <script src="<spring:theme code="zepto"/>"></script>
     <script src="<spring:theme code="scripts"/>"></script>
-</body>
-</html>

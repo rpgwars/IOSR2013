@@ -2,3 +2,20 @@ body{width:80%;margin:0 auto}.loginRegisterPage{background-color:#058b71}
 ul{
 	list-style-type: none;
 }
+
+div.contentWrapper{
+	width: 1200px;
+	overflow: hidden;
+}
+
+div.rightmenu{
+	width: 200px;
+	background-color: red;
+	overflow: hidden;
+}
+
+div.mainContent{
+	float: left;
+	width: 1000px;
+	background-color: green;
+}

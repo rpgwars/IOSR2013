@@ -51,9 +51,15 @@ public class ActivityCategory {
 		this.categoryName = categoryName;
 	}
 	
-	
-	
-	
-	
+	@Basic
+	private String categoryDescription;
 
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
+	}
+	
 }

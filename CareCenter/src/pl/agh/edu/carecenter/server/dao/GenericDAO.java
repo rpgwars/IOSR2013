@@ -5,7 +5,7 @@ import java.util.List;
 public interface GenericDAO<T> {
 	
 	void save(T entity);
-	List<T> listAll(Class<T> cls);
 	T getById(Integer id, Class<T> cls);
+	List<?> list(Class<?> cls);
 
 }

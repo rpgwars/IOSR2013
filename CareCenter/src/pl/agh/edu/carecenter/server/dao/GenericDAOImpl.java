@@ -24,18 +24,19 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<T> listAll(Class<T> cls) {
-		Criteria listCriteria = sessionFactory.getCurrentSession().createCriteria(cls);
-		return listCriteria.list(); 
-	}
-
-	@Override
 	public T getById(Integer id, Class<T> cls) {
 		 
 		
 		Criteria byIdCriteria = sessionFactory.getCurrentSession().createCriteria(cls);
 		byIdCriteria.add(Restrictions.eq("id",id));
 		return (T)byIdCriteria.uniqueResult();
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<?> list(Class<?> cls){
+		Criteria listCriteria = sessionFactory.getCurrentSession().createCriteria(cls);
+		return listCriteria.list(); 
 	}
 
 }

@@ -19,7 +19,8 @@
     		<mapping class="pl.agh.edu.carecenter.server.domain.Patient"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.Report"/>
     		<mapping class="pl.agh.edu.carecenter.server.domain.PatientCarePlan"/>
-    		<mapping class="pl.agh.edu.carecenter.server.domain.Group"/>
+    		<mapping class="pl.agh.edu.carecenter.server.domain.CareGroup"/>
+    		<mapping class="pl.agh.edu.carecenter.server.domain.AccountGroup"/>
     		
     	</session-factory>
     </hibernate-configuration>

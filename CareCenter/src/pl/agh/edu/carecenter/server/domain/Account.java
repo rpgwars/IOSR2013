@@ -22,18 +22,22 @@ import javax.persistence.Transient;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Account {
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY, targetEntity = Group.class)
-	private List<Group> groupList = new ArrayList<Group>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY, targetEntity = AccountGroup.class)
+	private List<AccountGroup> accountGroupList = new ArrayList<AccountGroup>();
+
+	public List<AccountGroup> getAccountGroupList() {
+		return accountGroupList;
+	}
+
+	public void setAccountGroupList(List<AccountGroup> accountGroupList) {
+		this.accountGroupList = accountGroupList;
+	}
 	
-	public List<Group> getGroupList() {
-		return groupList;
+	public void addAccountGroup(AccountGroup accountGroup){
+		accountGroupList.add(accountGroup);
 	}
 
-	public void setGroupList(List<Group> groupList) {
-		this.groupList = groupList;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.LAZY, targetEntity = AccountRole.class)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "account", fetch = FetchType.EAGER, targetEntity = AccountRole.class)
 	private List<AccountRole> accountRole = new ArrayList<AccountRole>();
 	
 	public List<AccountRole> getAccountRole() {
@@ -131,6 +135,17 @@ public class Account {
 	public void setRepeatedPassword(String repeatedPassword) {
 		this.repeatedPassword = repeatedPassword;
 	} 
+	
+	@Transient
+	private Integer groupId;
+
+	public Integer getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(Integer groupId) {
+		this.groupId = groupId;
+	}
 	
 	
 	

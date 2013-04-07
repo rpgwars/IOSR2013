@@ -16,8 +16,10 @@ import pl.agh.edu.carecenter.server.dao.AccountDAO;
 import pl.agh.edu.carecenter.server.domain.Account;
 import pl.agh.edu.carecenter.server.domain.AccountRole;
 import pl.agh.edu.carecenter.server.domain.Doctor;
+import pl.agh.edu.carecenter.server.domain.CareGroup;
 import pl.agh.edu.carecenter.server.exceptions.AccountAlreadyExists;
 import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
+import pl.agh.edu.carecenter.server.exceptions.GroupDoesNotExist;
 
 @Service
 public class AccountServiceImpl implements AccountService, UserDetailsService{
@@ -27,7 +29,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 	
 	
 	@Override
-	public void saveAccount(Account account) throws AccountAlreadyExists {
+	public void saveAccount(Account account) throws AccountAlreadyExists, GroupDoesNotExist{
 		
 		accountDao.saveAccount(account);
 	}
@@ -54,16 +56,14 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 		boolean enabled = true;
 		boolean accountNonExpired = true;
 		boolean credentialsNonExpired = true;
-		boolean locked = false; 
-		
-
+		boolean nonLocked = true; 
 		return new User(
 				domainUser.getEmail(),
 				domainUser.getPassword(),
 				enabled,
 				accountNonExpired,
 				credentialsNonExpired,
-				locked,
+				nonLocked,
 				getGrantedAuthorities(domainUser.getAccountRole()));
 	}
 	
@@ -71,9 +71,23 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 		List<GrantedAuthority> list = new ArrayList<GrantedAuthority>(); 
 		for(AccountRole ar : accountRoles){
 			list.add(new SimpleGrantedAuthority(ar.getRole()));
+			
 		}
 		
 		return list;  
+	}
+
+
+	@Override
+	public void saveGroup(CareGroup group) {
+		accountDao.saveGroup(group);
+		
+	}
+
+
+	@Override
+	public List<CareGroup> listGroups() {
+		return accountDao.listGroups();
 	}
 
 

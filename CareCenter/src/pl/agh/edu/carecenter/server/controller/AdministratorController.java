@@ -20,7 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import pl.agh.edu.carecenter.server.domain.AccountRole;
 import pl.agh.edu.carecenter.server.domain.Doctor;
+import pl.agh.edu.carecenter.server.domain.CareGroup;
 import pl.agh.edu.carecenter.server.exceptions.AccountAlreadyExists;
+import pl.agh.edu.carecenter.server.exceptions.GroupDoesNotExist;
 import pl.agh.edu.carecenter.server.service.AccountService;
 import pl.agh.edu.carecenter.server.service.DoctorService;
 
@@ -43,6 +45,7 @@ public class AdministratorController {
 		map.put("doctorList", doctorList);
 		map.put("doctor", new Doctor());
 		map.put("degreeList", doctorService.getDegreeList());
+		map.put("groupList", accountService.listGroups());
 		return "addDoctor"; 
 	}
 	
@@ -54,10 +57,7 @@ public class AdministratorController {
 			result.addError(new FieldError("doctor","repeatedPassword","passwords are diffrent"));
 		
 		if(result.hasErrors()){
-			mav.addObject("doctor", doctor);
-			mav.addObject("doctorList", accountService.listDoctors());
-			mav.addObject("degreeList",doctorService.getDegreeList());
-			return mav;
+			return prepareMaV(doctor);
 		}
 		else{
 
@@ -67,10 +67,10 @@ public class AdministratorController {
 			}
 			catch(AccountAlreadyExists exception){
 				result.addError(new FieldError("doctor","email","email already registered"));
-				mav.addObject("doctor", doctor);
-				mav.addObject("doctorList", accountService.listDoctors());
-				mav.addObject("degreeList",doctorService.getDegreeList());
-				return mav;
+				return prepareMaV(doctor);
+			} catch (GroupDoesNotExist e) {
+				result.addError(new FieldError("doctor","groupId","this group does not exist"));
+				return prepareMaV(doctor);
 			}
 
 			
@@ -80,6 +80,43 @@ public class AdministratorController {
 		return mav; 
 		 
 	}
+	
+	private ModelAndView prepareMaV(Doctor doctor){
+		ModelAndView mav = new ModelAndView("addDoctor");
+		mav.addObject("doctor", doctor);
+		mav.addObject("doctorList", accountService.listDoctors());
+		mav.addObject("degreeList", doctorService.getDegreeList());
+		mav.addObject("groupList", accountService.listGroups());
+		return mav;
+	}
+	
+	@RequestMapping("/administration/addGroup")
+	public String listGroups(Map<String,Object> map){
+		List<CareGroup> groupList = accountService.listGroups();
+		map.put("groupList", groupList);
+		map.put("group", new CareGroup());
+		return "addGroup";
+	}
+	
+	@RequestMapping(value = "/administration/addGroup", method=RequestMethod.POST)
+	public ModelAndView addGroup(@Valid CareGroup group, BindingResult result){
+		
+		ModelAndView mav = new ModelAndView(); 
+		if(group.getGroupName().length() > 0){
+			accountService.saveGroup(group);
+			mav.setViewName("redirect:/administration/addGroup.html");
+			
+		}
+		else{
+			mav.addObject("group", group);
+			mav.addObject("groupList",accountService.listGroups());
+			result.addError(new FieldError("group","groupName","name of the group is too short"));
+			mav.setViewName("addGroup");
+		}
+		
+		return mav;
+	}
+	
 	
 	@InitBinder("doctor")
 	protected void initBinder(WebDataBinder binder){

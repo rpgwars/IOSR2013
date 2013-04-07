@@ -1,29 +1,39 @@
 package pl.agh.edu.carecenter.server.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-@Entity
 @Table
-public class Group {
+@Entity
+public class CareGroup {
 	
-	@ManyToOne(targetEntity = Account.class, fetch = FetchType.EAGER)
-	private Account account; 
 	
-	public Account getAccount() {
-		return account;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "group", fetch = FetchType.LAZY, targetEntity = AccountGroup.class)
+	private List<AccountGroup> accountGroupList = new ArrayList<AccountGroup>();
+
+	public List<AccountGroup> getAccountGroupList() {
+		return accountGroupList;
 	}
 
-	public void setAccount(Account account) {
-		this.account = account;
+	public void setAccountGroupList(List<AccountGroup> accountGroupList) {
+		this.accountGroupList = accountGroupList;
 	}
 
+	public void addAccountGroup(AccountGroup accountGroup){
+		accountGroupList.add(accountGroup);
+	}
+	
 	@Id
 	@GeneratedValue
 	private Integer id;

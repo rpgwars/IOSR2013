@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.agh.edu.carecenter.server.domain.AccountRole;
-import pl.agh.edu.carecenter.server.domain.Doctor;
 import pl.agh.edu.carecenter.server.domain.CareGroup;
+import pl.agh.edu.carecenter.server.domain.Doctor;
 import pl.agh.edu.carecenter.server.exceptions.AccountAlreadyExists;
 import pl.agh.edu.carecenter.server.exceptions.GroupDoesNotExist;
 import pl.agh.edu.carecenter.server.service.AccountService;

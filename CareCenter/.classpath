@@ -15,5 +15,7 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Damian/.m2/repository/CareCenterDomain/CareCenterDomain/0.0.1-SNAPSHOT/CareCenterDomain-0.0.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Damian/.m2/repository/CareCenterOperations/CareCenterOperations/0.0.1-SNAPSHOT/CareCenterOperations-0.0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

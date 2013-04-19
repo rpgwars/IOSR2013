@@ -3,6 +3,8 @@
 	<name>CareCenter</name>
 	<comment></comment>
 	<projects>
+		<project>CareCenterDomain</project>
+		<project>CareCenterOperations</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

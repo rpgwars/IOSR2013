@@ -5,6 +5,12 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
+        <dependent-module archiveName="CareCenterDomain.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CareCenterDomain/CareCenterDomain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CareCenterOperations.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CareCenterOperations/CareCenterOperations">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="CareCenter"/>
         <property name="java-output-path" value="/CareCenter/build/classes"/>
     </wb-module>

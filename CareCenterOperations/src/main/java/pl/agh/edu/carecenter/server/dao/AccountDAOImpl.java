@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pl.agh.edu.carecenter.server.domain.Account;
 import pl.agh.edu.carecenter.server.domain.AccountGroup;
-import pl.agh.edu.carecenter.server.domain.Doctor;
 import pl.agh.edu.carecenter.server.domain.CareGroup;
+import pl.agh.edu.carecenter.server.domain.Doctor;
 import pl.agh.edu.carecenter.server.exceptions.AccountAlreadyExists;
 import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
 import pl.agh.edu.carecenter.server.exceptions.GroupDoesNotExist;

@@ -3,7 +3,7 @@
 
 <div class="mainContent">
 	<div>
-		<form:form method="post" commandName="category">
+		<form:form method="post" commandName="activityCategory">
 			<div>
 				<ul>
 					<li><form:label path="categoryName">Name: </form:label></li>

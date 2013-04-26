@@ -27,6 +27,10 @@ public class ActivityCategory {
 	public void setActivityList(List<Activity> activityList) {
 		this.activityList = activityList;
 	}
+	
+	public void addActivity(Activity activity){
+		activityList.add(activity);
+	}
 
 	@Id
 	@GeneratedValue

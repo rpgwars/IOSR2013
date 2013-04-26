@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Table
@@ -89,6 +90,18 @@ public class Activity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	
+	@Transient
+	private int categoryId;
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	

@@ -7,6 +7,7 @@
     String addDoctor = "http://" + name + "administration/addDoctor.html";
     String addGroup = "http://" + name + "administration/addGroup.html";
     String addCategory = "http://" + name + "doctor/addCategory.html";
+    String addActivity = "http://" + name + "doctor/addActivity.html";
 %>
 
 <header>
@@ -55,6 +56,9 @@
                         <security:authorize access="hasRole('ROLE_DOCTOR')">
                             <li>
                                 <a href="<%=addCategory%>">Categories</a>
+                            </li>
+                            <li>
+                                <a href="<%=addActivity%>">Activities</a>
                             </li>
                         </security:authorize>
                     </ul>

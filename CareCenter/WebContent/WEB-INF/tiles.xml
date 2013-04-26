@@ -37,5 +37,9 @@
     <definition name="addCategory" extends="mainTemplate">
         <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/addCategory.jsp" />
     </definition>
+    
+    <definition name="addActivity" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/addActivity.jsp" />
+    </definition>
  
 </tiles-definitions>

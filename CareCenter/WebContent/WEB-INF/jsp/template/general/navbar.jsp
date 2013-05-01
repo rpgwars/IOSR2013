@@ -8,6 +8,8 @@
     String addGroup = "http://" + name + "administration/addGroup.html";
     String addCategory = "http://" + name + "doctor/addCategory.html";
     String addActivity = "http://" + name + "doctor/addActivity.html";
+    String addCarePlan = "http://" + name + "doctor/addCarePlan.html";
+    String addPatient = "http://" + name + "doctor/addPatient.html";
 %>
 
 <header>
@@ -54,11 +56,17 @@
                         </li>
                         </security:authorize>
                         <security:authorize access="hasRole('ROLE_DOCTOR')">
+                        	<li>
+                                <a href="<%=addPatient%>">Patients</a>
+                            </li>
                             <li>
                                 <a href="<%=addCategory%>">Categories</a>
                             </li>
                             <li>
                                 <a href="<%=addActivity%>">Activities</a>
+                            </li>
+                            <li>
+                                <a href="<%=addCarePlan%>">CarePlans</a>
                             </li>
                         </security:authorize>
                     </ul>

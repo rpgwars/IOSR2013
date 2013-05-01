@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Table
@@ -72,6 +73,17 @@ public class ActivityCarePlan {
 		this.hourOfDay = hourOfDay;
 	} 
 	
+	@Transient
+	private Integer activityId;
+
+	public Integer getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(Integer activityId) {
+		this.activityId = activityId;
+	}
+
 	
 
 }

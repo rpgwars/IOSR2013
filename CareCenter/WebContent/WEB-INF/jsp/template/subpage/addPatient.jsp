@@ -2,11 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 
+
 <div class="mainContent">
 
 	
 	<div>
-		<form:form method="post" commandName="doctor">
+		<form:form method="post" commandName="patient">
 			<div>
 				<ul>
 					<li><form:label path="name">name</form:label></li>
@@ -51,11 +52,23 @@
 			</div>
 			<div>
 				<ul>
-					<li>
-						<form:select path="degree">
-		     				<form:options items="${degreeList}"></form:options>                                                                                                       
-		  				</form:select>
-		  			</li>
+					<li><form:label path="city">city</form:label></li>
+					<li><form:input path="city"></form:input></li>
+					<li><form:errors path="city"></form:errors></li>
+  				</ul>
+			</div>
+			<div>
+				<ul>
+					<li><form:label path="street">street</form:label></li>
+					<li><form:input path="street"></form:input></li>
+					<li><form:errors path="street"></form:errors></li>
+  				</ul>
+			</div>
+			<div>
+				<ul>
+					<li><form:label path="postalCode">postal code</form:label></li>
+					<li><form:input path="postalCode"></form:input></li>
+					<li><form:errors path="postalCode"></form:errors></li>
   				</ul>
 			</div>
 			<div>
@@ -72,19 +85,22 @@
 	<hr>
 	<div style="width: 500; overflow: hidden;">
 		<div style="float: left; width: 500px">
-			<h2>Registered doctors:</h2>
+			<h2>Registered patients:</h2>
 			<br>
 			<c:choose>
-				<c:when test="${not empty doctorList}">
+				<c:when test="${not empty patientList}">
 				<table>
-				<c:forEach items="${doctorList}" var="doctor" varStatus="status">
+				<c:forEach items="${patientList}" var="patient" varStatus="status">
 					<tr>
 					
 		 				<td>${status.index}</td>
-		 				<td>${doctor.name}</td>
-		 				<td>${doctor.surname}</td>
-		 				<td>${doctor.email }</td>
-						<td> <a href="${doctor.id}/assignGroup.html">assign group</a></td>
+		 				<td>${patient.name}</td>
+		 				<td>${patient.surname}</td>
+		 				<td>${patinet.email }</td>
+		 				<td>${patient.street }</td>
+		 				<td>${patient.city }</td>
+		 				<td> <a href="${patient.id}/assignGroup.html">assign group</a></td>
+	
 		 			</tr>
 				</c:forEach>
 				</table>

@@ -1,9 +1,9 @@
 package pl.agh.edu.carecenter.server.dao;
 
 import java.util.List;
-import java.util.Locale.Category;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,15 +34,22 @@ public class ActivityDAOImpl extends GenericDAOImpl<Activity> implements Activit
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<ActivityCategory> listCategories() {
-		return (List<ActivityCategory>) super.list(ActivityCategory.class);
+	public List<ActivityCategory> listCategories(boolean populateActivities) {
+		List<ActivityCategory> categoryList = 
+				(List<ActivityCategory>) super.list(ActivityCategory.class);
+		
+		if(populateActivities)
+			for(ActivityCategory category : categoryList){
+				Hibernate.initialize(category.getActivityList());
+			}
+		return categoryList;
 	}
 
 	@Override
-	@Transactional()
+	@Transactional
 	public void saveActivity(Activity activity) throws CategoryDoesNotExist {
 		
-		Criteria categoryCriteria = sessionFactory.getCurrentSession().createCriteria(Category.class);
+		Criteria categoryCriteria = sessionFactory.getCurrentSession().createCriteria(ActivityCategory.class);
 		categoryCriteria.add(Restrictions.eq("id", activity.getCategoryId()));
 		ActivityCategory category = (ActivityCategory) categoryCriteria.uniqueResult();
 		if(category != null){

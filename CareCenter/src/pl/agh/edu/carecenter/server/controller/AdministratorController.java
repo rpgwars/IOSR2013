@@ -10,10 +10,13 @@ import javax.validation.Valid;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,11 +25,12 @@ import pl.agh.edu.carecenter.server.domain.AccountRole;
 import pl.agh.edu.carecenter.server.domain.CareGroup;
 import pl.agh.edu.carecenter.server.domain.Doctor;
 import pl.agh.edu.carecenter.server.exceptions.AccountAlreadyExists;
+import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
 import pl.agh.edu.carecenter.server.exceptions.GroupDoesNotExist;
 import pl.agh.edu.carecenter.server.service.AccountService;
 import pl.agh.edu.carecenter.server.service.DoctorService;
 
-
+ 
 @Controller
 public class AdministratorController {
 	
@@ -117,12 +121,28 @@ public class AdministratorController {
 		return mav;
 	}
 	
+	@RequestMapping("/administration/{doctorId}/assignGroup")
+	public String showPossibleGroups(Map<String,Object> map, @PathVariable Integer doctorId) throws AccountNotFound{
+		
+		List<Integer> possibleGroups = 
+				accountService.getPossibleAssignGroups(accountService.getAccountById(doctorId).getEmail(),null);
+		map.put("possibleGroups", possibleGroups);
+		return "assignGroup";
+	}
+	
+	@RequestMapping("/administration/{doctorId}/assignGroup/{groupId}")
+	public String assignGroupToDoctor(@PathVariable Integer doctorId, @PathVariable Integer groupId) throws AccountNotFound{
+		
+		accountService.assignGroup(groupId, null, doctorId);
+		return "redirect:/administration/addDoctor.html";
+	}
+	
+	
 	
 	@InitBinder("doctor")
 	protected void initBinder(WebDataBinder binder){
 		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));
 		
-		//binder.setValidator(new validator);
 	}
 
 }

@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class CareGroup {
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "group", fetch = FetchType.LAZY, targetEntity = AccountGroup.class)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "careGroup", fetch = FetchType.LAZY, targetEntity = AccountGroup.class)
 	private List<AccountGroup> accountGroupList = new ArrayList<AccountGroup>();
 
 	public List<AccountGroup> getAccountGroupList() {

@@ -1,7 +1,9 @@
 package pl.agh.edu.carecenter.server.domain;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -62,6 +64,28 @@ public class PatientCarePlan {
 		this.id = id;
 	}
 	
+	@Basic
+	private Date startDte;
+
+	public Date getStartDte() {
+		return startDte;
+	}
+
+	public void setStartDte(Date startDte) {
+		this.startDte = startDte;
+	}
+	
+	
+	@Basic
+	private Date endDate;
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 	
 
 }

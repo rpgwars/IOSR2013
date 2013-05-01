@@ -54,6 +54,10 @@ public class Activity {
 	public void setActivityCarePlanList(List<ActivityCarePlan> activityCarePlanList) {
 		this.activityCarePlanList = activityCarePlanList;
 	}
+	
+	public void addActivityCarePlan(ActivityCarePlan activityCarePlan){
+		this.activityCarePlanList.add(activityCarePlan);
+	}
 
 
 	@Id

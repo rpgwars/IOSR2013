@@ -41,5 +41,17 @@
     <definition name="addActivity" extends="mainTemplate">
         <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/addActivity.jsp" />
     </definition>
+    
+    <definition name="addCarePlan" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/addCarePlan.jsp" />
+    </definition>
+    
+    <definition name="addPatient" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/addPatient.jsp" />
+    </definition>
+    
+    <definition name="assignGroup" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/assignGroup.jsp" />
+    </definition>
  
 </tiles-definitions>

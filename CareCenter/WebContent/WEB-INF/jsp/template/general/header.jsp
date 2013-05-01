@@ -10,10 +10,10 @@
          - <spring:message code="core.title"/>
     </title>
 	<%
-	 String pathToCss=request.getServerName();
+	 String pathToCss="http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 	%>
-    <link rel="stylesheet" href="<spring:theme code="normalize-css"/>" type="text/css">
-    <link rel="stylesheet" href="<spring:theme code="bootstrap"/>" type="text/css"/>
-    <link rel="stylesheet" href="<spring:theme code="flat-css"/>" type="text/css"/>
-    <link rel="stylesheet" href="<spring:theme code="main-css"/>" type="text/css"/>
+    <link rel="stylesheet" href="<%=pathToCss%><spring:theme code="normalize-css"/>" type="text/css">
+    <link rel="stylesheet" href="<%=pathToCss%><spring:theme code="bootstrap"/>" type="text/css"/>
+    <link rel="stylesheet" href="<%=pathToCss%><spring:theme code="flat-css"/>" type="text/css"/>
+    <link rel="stylesheet" href="<%=pathToCss%><spring:theme code="main-css"/>" type="text/css"/>
 </head>

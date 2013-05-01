@@ -23,14 +23,15 @@ public class AccountGroup {
 	}
 	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = CareGroup.class)
-	private CareGroup group;
+	private CareGroup careGroup;
 
-	public CareGroup getGroup() {
-		return group;
+	
+	public CareGroup getCareGroup() {
+		return careGroup;
 	}
 
-	public void setGroup(CareGroup group) {
-		this.group = group;
+	public void setCareGroup(CareGroup careGroup) {
+		this.careGroup = careGroup;
 	}
 
 	@Id

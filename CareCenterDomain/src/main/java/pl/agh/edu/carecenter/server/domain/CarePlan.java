@@ -54,32 +54,16 @@ public class CarePlan {
 		this.id = id;
 	}
 	
-	@Basic
-	private Date startDte;
-
-	public Date getStartDte() {
-		return startDte;
-	}
-
-	public void setStartDte(Date startDte) {
-		this.startDte = startDte;
-	}
-	
 	
 	@Basic
-	private Date endDate;
+	private String carePlanName;
 
-	public Date getEndDate() {
-		return endDate;
+	public String getCarePlanName() {
+		return carePlanName;
 	}
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
+	public void setCarePlanName(String carePlanName) {
+		this.carePlanName = carePlanName;
 	}
-	
-	
-	
-	
-	
 
 }

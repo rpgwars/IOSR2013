@@ -18,16 +18,12 @@ public class PatientController {
 	private PatientService patientService;
 	
 	
-	@RequestMapping(value = "/patient/getCarePlans", method = RequestMethod.GET, produces="application/json")
-	@ResponseBody
-	public AndroidCarePlan getCarePlans() {
+	@RequestMapping(value = "/patient/getCarePlans", method = RequestMethod.GET)
+	public @ResponseBody List<AndroidCarePlan> getCarePlans() {
 	    
 		String userName = "p1";
-		System.out.println("przeed");
 		List<AndroidCarePlan> list = patientService.getPatientsCarePlans(userName);
-		System.out.println("po");
-		System.out.println(list.size() +  " xxx");
-		return list.get(0);
+		return list;
 		
 		
 	}

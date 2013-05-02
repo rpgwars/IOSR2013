@@ -51,7 +51,7 @@ public class PatientServiceImpl implements PatientService {
 				
 				androidActivityList.add(androidActivity);
 			}
-			
+			androidCarePlan.setAndroindActivityList(androidActivityList);
 			androidCarePlans.add(androidCarePlan);
 		}
 		

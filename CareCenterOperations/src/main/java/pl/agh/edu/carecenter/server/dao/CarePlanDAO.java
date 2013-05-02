@@ -11,5 +11,6 @@ public interface CarePlanDAO extends GenericDAO<CarePlan>{
 	List<CarePlan> listPossibleCarePlans(Integer patientId);
 	List<CarePlan> listAssignedCarePlans(Integer patientId);
 	void savePatientCarePlan(PatientCarePlan patientCarePlan, Integer carePlanId, Integer patientId);
+	List<PatientCarePlan> getPatientsCarePlans(String username);
 
 }

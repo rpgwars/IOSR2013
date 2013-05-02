@@ -127,5 +127,32 @@ public class CarePlanDAOImpl extends GenericDAOImpl<CarePlan> implements CarePla
 		
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public List<PatientCarePlan> getPatientsCarePlans(String username) {
+		
+		Criteria patientCarePlansCriteria = sessionFactory.getCurrentSession().createCriteria(PatientCarePlan.class);
+		
+		patientCarePlansCriteria.createAlias("patient", "pat").
+			createAlias("carePlan", "cp").createAlias("cp.activityCarePlanList", "acpl").
+				createAlias("acpl.activity", "act");
+		
+		patientCarePlansCriteria.add(Restrictions.eq("pat.email", username)).
+			setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		
+		List<PatientCarePlan> patientCarePlanList = patientCarePlansCriteria.list();
+		for(PatientCarePlan patientCarePlan : patientCarePlanList){
+			Hibernate.initialize(patientCarePlan.getCarePlan());
+			
+			CarePlan carePlan = patientCarePlan.getCarePlan();
+			Hibernate.initialize(carePlan.getActivityCarePlanList());
+			for(ActivityCarePlan activityCarePlan : carePlan.getActivityCarePlanList())
+				Hibernate.initialize(activityCarePlan.getActivity());
+			
+		}
+		
+		return patientCarePlanList;
+	}
+
 	
 }

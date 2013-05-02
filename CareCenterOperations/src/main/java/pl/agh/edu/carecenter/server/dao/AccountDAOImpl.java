@@ -120,7 +120,7 @@ public class AccountDAOImpl extends GenericDAOImpl<Account> implements AccountDA
 				sessionFactory.getCurrentSession().createCriteria(Patient.class).
 					createAlias("accountGroupList","acg").createAlias("acg.careGroup","gr").
 						add(Restrictions.in("gr.id", groupIds));
-		List<Patient> result = patientFromGroupCriteria.list();
+		List<Patient> result = patientFromGroupCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 		return result;
 	}
 

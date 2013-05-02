@@ -20,7 +20,7 @@
 			</div>
 			<div>
 				<form:select path="categoryId">
-    				<form:options items="${categoryList}" itemValue="id" itemLabel="categoryDescription" />
+    				<form:options items="${categoryList}" itemValue="id" itemLabel="categoryName" />
 				</form:select>
 			</div>
 			<hr>

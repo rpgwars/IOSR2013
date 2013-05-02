@@ -53,5 +53,13 @@
     <definition name="assignGroup" extends="mainTemplate">
         <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/assignGroup.jsp" />
     </definition>
+    
+    <definition name="managePatients" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/managePatients.jsp" />
+    </definition>
+    
+    <definition name="assignCarePlan" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/assignCarePlan.jsp" />
+    </definition>
  
 </tiles-definitions>

@@ -12,6 +12,7 @@ import pl.agh.edu.carecenter.server.dao.DoctorDAO;
 import pl.agh.edu.carecenter.server.domain.Activity;
 import pl.agh.edu.carecenter.server.domain.ActivityCategory;
 import pl.agh.edu.carecenter.server.domain.CarePlan;
+import pl.agh.edu.carecenter.server.domain.PatientCarePlan;
 import pl.agh.edu.carecenter.server.exceptions.CategoryDoesNotExist;
 
 @Service
@@ -56,6 +57,25 @@ public class DoctorServiceImpl implements DoctorService{
 	@Override
 	public void saveCarePlan(CarePlan carePlan) {
 		carePlanDao.saveCarePlan(carePlan);
+	}
+
+	@Override
+	public List<CarePlan> listPossibleCarePlans(Integer patientId) {
+		return carePlanDao.listPossibleCarePlans(patientId);
+	}
+
+	@Override
+	public List<CarePlan> listAssignedCarePlans(Integer patientId) {
+		return carePlanDao.listAssignedCarePlans(patientId);
+	}
+
+	@Override
+	public void assignCarePlan(PatientCarePlan patientCarePlan,
+			Integer patientId) {
+		
+		Integer carePlanId = patientCarePlan.getCarePlanId();
+		carePlanDao.savePatientCarePlan(patientCarePlan, carePlanId, patientId);
+		
 	}
 	
 	

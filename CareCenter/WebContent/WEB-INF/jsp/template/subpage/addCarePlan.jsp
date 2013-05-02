@@ -78,8 +78,6 @@ $('[id="b"]').attr("id","");
 $('[id="a"]').attr('name','activityCarePlanList['+amoutOfActivities+'].dayOfWeek');
 $('[id="a"]').attr("id","");
 
-alert($("html").html());
-
 amoutOfActivities +=1;
 
 
@@ -116,8 +114,10 @@ $( this ).removeClass( "ui-state-default" );
 			</c:forEach>
 		</div>
 	</div>
+	<hr/>
 	<form:form method="post" modelAttribute="carePlan">
 		<ul>
+			<li><form:label path="carePlanName"/>Care plan name</li>
 			<li><form:input path="carePlanName" type="text"/></li>
 			<li><form:errors path="carePlanName"></form:errors></li>
 		</ul>

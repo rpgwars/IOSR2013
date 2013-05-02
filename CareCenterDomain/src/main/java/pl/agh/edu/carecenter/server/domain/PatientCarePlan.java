@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Table
@@ -65,27 +66,50 @@ public class PatientCarePlan {
 	}
 	
 	@Basic
-	private Date startDte;
-
-	public Date getStartDte() {
-		return startDte;
+	private Date startDate;
+	
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setStartDte(Date startDte) {
-		this.startDte = startDte;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
-	
-	
+
 	@Basic
 	private Date endDate;
 
 	public Date getEndDate() {
 		return endDate;
 	}
+	
+	@Basic 
+	private String remarks; 
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
+	
+	@Transient
+	private Integer carePlanId;
+
+	public Integer getCarePlanId() {
+		return carePlanId;
+	}
+
+	public void setCarePlanId(Integer carePlanId) {
+		this.carePlanId = carePlanId;
+	}
+	
+	
 	
 
 }

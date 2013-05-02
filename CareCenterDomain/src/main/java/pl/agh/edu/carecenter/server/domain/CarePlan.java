@@ -41,6 +41,10 @@ public class CarePlan {
 	public void setPatientCarePlanList(List<PatientCarePlan> patientCarePlanList) {
 		this.patientCarePlanList = patientCarePlanList;
 	}
+	
+	public void addPatientCarePlan(PatientCarePlan patientCarePlan){
+		this.patientCarePlanList.add(patientCarePlan);
+	}
 
 	@Id
 	@GeneratedValue

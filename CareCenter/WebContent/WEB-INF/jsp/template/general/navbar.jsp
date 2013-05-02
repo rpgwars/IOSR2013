@@ -10,6 +10,7 @@
     String addActivity = "http://" + name + "doctor/addActivity.html";
     String addCarePlan = "http://" + name + "doctor/addCarePlan.html";
     String addPatient = "http://" + name + "doctor/addPatient.html";
+    String managePatients = "http://" + name + "doctor/managePatients.html";
 %>
 
 <header>
@@ -67,6 +68,9 @@
                             </li>
                             <li>
                                 <a href="<%=addCarePlan%>">CarePlans</a>
+                            </li>
+                            <li>
+                                <a href="<%=managePatients%>">Manage patients</a>
                             </li>
                         </security:authorize>
                     </ul>

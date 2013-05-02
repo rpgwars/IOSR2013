@@ -38,6 +38,10 @@ public class Patient extends Account{
 	public void setPatientCarePlanList(List<PatientCarePlan> patientCarePlanList) {
 		this.patientCarePlanList = patientCarePlanList;
 	}
+	
+	public void addPatientCarePlan(PatientCarePlan patientCarePlan){
+		this.patientCarePlanList.add(patientCarePlan);
+	}
 
 	@Basic
 	private String city;

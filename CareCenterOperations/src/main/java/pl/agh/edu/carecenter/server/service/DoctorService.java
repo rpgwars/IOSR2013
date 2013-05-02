@@ -5,6 +5,7 @@ import java.util.List;
 import pl.agh.edu.carecenter.server.domain.Activity;
 import pl.agh.edu.carecenter.server.domain.ActivityCategory;
 import pl.agh.edu.carecenter.server.domain.CarePlan;
+import pl.agh.edu.carecenter.server.domain.PatientCarePlan;
 import pl.agh.edu.carecenter.server.exceptions.CategoryDoesNotExist;
 
 public interface DoctorService {
@@ -15,5 +16,8 @@ public interface DoctorService {
 	List<Activity> listActivities();
 	void saveActivity(Activity activity) throws CategoryDoesNotExist;
 	void saveCarePlan(CarePlan carePlan);
+	List<CarePlan> listPossibleCarePlans(Integer patientId);
+	List<CarePlan> listAssignedCarePlans(Integer patientId);
+	void assignCarePlan(PatientCarePlan patientCarePlan, Integer patientId);
 
 }

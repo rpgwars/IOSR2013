@@ -29,6 +29,7 @@ import pl.agh.edu.carecenter.server.domain.ActivityCategory;
 import pl.agh.edu.carecenter.server.domain.CarePlan;
 import pl.agh.edu.carecenter.server.domain.Doctor;
 import pl.agh.edu.carecenter.server.domain.Patient;
+import pl.agh.edu.carecenter.server.domain.PatientCarePlan;
 import pl.agh.edu.carecenter.server.exceptions.AccountAlreadyExists;
 import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
 import pl.agh.edu.carecenter.server.exceptions.CategoryDoesNotExist;
@@ -38,6 +39,7 @@ import pl.agh.edu.carecenter.server.service.DoctorService;
 import pl.agh.edu.carecenter.server.validator.ActivityCategoryValidator;
 import pl.agh.edu.carecenter.server.validator.ActivityValidator;
 import pl.agh.edu.carecenter.server.validator.CarePlanValidator;
+import pl.agh.edu.carecenter.server.validator.PatientCarePlanValidator;
 
 
 @Controller
@@ -230,6 +232,46 @@ public class DoctorController {
 		return "redirect:/doctor/addPatient.html";
 	}
 	
+	@RequestMapping("/doctor/managePatients")
+	public String showPatients(Map<String,Object> map) throws AccountNotFound{
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		List<Patient> patientList = accountService.listPatients(userName);
+		map.put("patientList", patientList);
+		
+		return "managePatients";
+	}
+	
+	@RequestMapping("/doctor/{patientId}/assignCarePlan")
+	public String showPossibleAndAssignedCarePlans(Map<String,Object> map, @PathVariable Integer patientId){
+		
+		map.put("patientCarePlan", new PatientCarePlan());
+		map.put("assignedCarePlanList", doctorService.listAssignedCarePlans(patientId));
+		map.put("possibleCarePlanList", doctorService.listPossibleCarePlans(patientId));
+		return "assignCarePlan";
+	}
+	
+	@RequestMapping(value = "/doctor/{patientId}/assignCarePlan", method = RequestMethod.POST)
+	public ModelAndView assignCarePlan(@PathVariable Integer patientId, 
+			@Valid PatientCarePlan patientCarePlan, BindingResult bindingResult){
+		
+		ModelAndView mav = new ModelAndView(); 
+		
+		if(bindingResult.hasErrors()){
+			mav.addObject("patientCarePlan", patientCarePlan);
+			mav.addObject("assignedCarePlanList", doctorService.listAssignedCarePlans(patientId));
+			mav.addObject("possibleCarePlanList", doctorService.listPossibleCarePlans(patientId));
+			mav.setViewName("assignCarePlan");
+			return mav; 
+		}
+		
+		doctorService.assignCarePlan(patientCarePlan, patientId);
+		
+		mav.setViewName("redirect:/doctor/managePatients.html");
+		return mav;
+	}
+	
 	@InitBinder("patient")
 	protected void initBinder(WebDataBinder binder){
 		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));
@@ -249,6 +291,12 @@ public class DoctorController {
 	@InitBinder("activity")
 	protected void initActivityBinder(WebDataBinder binder){
 		binder.setValidator(new ActivityValidator());
+	}
+	
+	@InitBinder("patientCarePlan")
+	protected void initPatientCarePlanBinder(WebDataBinder binder){
+		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));
+		binder.setValidator(new PatientCarePlanValidator());
 	}
 
 }

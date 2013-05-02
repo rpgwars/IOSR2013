@@ -10,14 +10,14 @@
 			<div>
 				<ul>
 					<li><form:label path="name">name</form:label></li>
-					<li><form:input path="name"></form:input></li>
+					<li><form:input path="name" placeholder="Name"></form:input></li>
 					<li><form:errors path="name"></form:errors></li>
 				</ul>			
 			</div>
 			<div>
 				<ul>
 					<li><form:label path="surname">surname</form:label></li>
-					<li><form:input path="surname"></form:input></li>
+					<li><form:input path="surname" placeholder="Surname"></form:input></li>
 					<li><form:errors path="surname"></form:errors></li>
 				</ul>
 			</div>

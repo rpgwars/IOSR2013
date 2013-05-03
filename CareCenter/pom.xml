@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <properties>
-    <springVersion>3.1.3.RELEASE</springVersion>
+    <springVersion>3.2.1.RELEASE</springVersion>
     <springSecurityVersion>3.1.3.RELEASE</springSecurityVersion>
     <apacheTilesVersion>2.2.1</apacheTilesVersion>
   </properties>
@@ -257,12 +257,16 @@
 	  </dependency>
 	  
 	  <!-- jackson -->
-	  <dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.7.1</version>
-	  </dependency>
-	  
+      <dependency>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>jackson-mapper-asl</artifactId>
+          <version>1.9.9</version>
+      </dependency>
+      <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-core-asl</artifactId>
+      <version>1.9.9</version>
+      </dependency>
 	  
 	  <!--  javax validation -->
 	  <dependency>

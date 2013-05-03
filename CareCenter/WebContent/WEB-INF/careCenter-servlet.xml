@@ -16,7 +16,6 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
         base-package="pl.agh.edu.carecenter.server.controller" />
     <mvc:annotation-driven />
     
-    
      <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass">
             <value>

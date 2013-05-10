@@ -1,5 +1,7 @@
 package pl.agh.edu.carecenter.android.transferobject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class AndroidCarePlan {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="CET")
 	private Date startDate;
 
 	public Date getStartDate() {
@@ -35,7 +37,8 @@ public class AndroidCarePlan {
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="CET")
 	private Date endDate;
 
 	public Date getEndDate() {
@@ -59,5 +62,7 @@ public class AndroidCarePlan {
 	public void addAndroidActivity(AndroidActivity androidActivity){
 		androindActivityList.add(androidActivity);
 	}
-	
+
 }
+
+

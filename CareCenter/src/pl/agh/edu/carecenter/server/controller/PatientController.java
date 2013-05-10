@@ -2,10 +2,7 @@ package pl.agh.edu.carecenter.server.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.agh.edu.carecenter.android.transferobject.AndroidAccount;
 import pl.agh.edu.carecenter.android.transferobject.AndroidCarePlan;
 import pl.agh.edu.carecenter.server.domain.Account;
@@ -70,11 +67,10 @@ public class PatientController {
         }
     }
 	
-	@RequestMapping(value = "/patient/getCarePlans", method = RequestMethod.GET)
-	public @ResponseBody List<AndroidCarePlan> getCarePlans() {
-	    
-		String userName = "p1";
-		List<AndroidCarePlan> list = patientService.getPatientsCarePlans(userName);
+	@RequestMapping(value = "/patient/getCarePlans", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<AndroidCarePlan> getCarePlans(@RequestHeader("Authorization") String authInfo, HttpServletResponse response) throws AccountNotFound  {
+
+		List<AndroidCarePlan> list = patientService.getPatientsCarePlans(authInfo);
 		return list;
 		
 		

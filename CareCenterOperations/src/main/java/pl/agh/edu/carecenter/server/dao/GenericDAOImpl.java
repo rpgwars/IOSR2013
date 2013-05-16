@@ -38,5 +38,11 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T> {
 		Criteria listCriteria = sessionFactory.getCurrentSession().createCriteria(cls);
 		return listCriteria.list(); 
 	}
+	
+	@Override
+	@Transactional
+	public void remove(T entity){
+		sessionFactory.getCurrentSession().delete(entity);
+	}
 
 }

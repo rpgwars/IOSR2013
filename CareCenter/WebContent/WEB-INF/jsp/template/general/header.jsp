@@ -10,7 +10,13 @@
          - <spring:message code="core.title"/>
     </title>
 	<%
-	 String pathToCss="http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+	String pathToCss;
+	if(request.isSecure())
+		 pathToCss = "https://"; 
+	else
+		pathToCss = "http://";
+	
+	 pathToCss += request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
 	%>
     <link rel="stylesheet" href="<%=pathToCss%><spring:theme code="normalize-css"/>" type="text/css">
     <link rel="stylesheet" href="<%=pathToCss%><spring:theme code="bootstrap"/>" type="text/css"/>

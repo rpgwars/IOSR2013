@@ -28,6 +28,10 @@ public class Patient extends Account{
 		this.alarmList = alarmList;
 	}
 	
+	public void addAlarm(Alarm alarm){
+		alarmList.add(alarm);
+	}
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", fetch = FetchType.LAZY, targetEntity = PatientCarePlan.class)
 	private List<PatientCarePlan> patientCarePlanList = new ArrayList<PatientCarePlan>();
 	

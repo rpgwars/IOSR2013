@@ -272,6 +272,16 @@ public class DoctorController {
 		return mav;
 	}
 	
+	@RequestMapping("/doctor/removeAlarm/{alarmId}")
+	public String removeAlarm(@PathVariable Integer alarmId){
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		String userName = authentication.getName();
+		if(doctorService.isAbleToRemoveAlarm(userName, alarmId))
+			doctorService.removeAlarm(alarmId);
+		return "redirect:/hello.html";
+	}
+	
 	@InitBinder("patient")
 	protected void initBinder(WebDataBinder binder){
 		binder.registerCustomEditor(Date.class, null, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));

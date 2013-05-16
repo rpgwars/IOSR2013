@@ -1,10 +1,16 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>		
 		
 		<% String name= request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + "/";
-		String home = "http://" + name + "hello.html";
-		String addDoctor = "http://" + name + "administration/addDoctor.html";
-		String addGroup = "http://" + name + "administration/addGroup.html";
-		String addCategory = "http://" + name + "doctor/addCategory.html";
+		String protocol; 
+		if(request.isSecure())
+			protocol = "https://";
+		else
+			protocol = "http://";
+		
+		String home = protocol + name + "hello.html";
+		String addDoctor = protocol + name + "administration/addDoctor.html";
+		String addGroup = protocol + name + "administration/addGroup.html";
+		String addCategory = protocol + name + "doctor/addCategory.html";
 		%>
 		
 		<div class="rightmenu">

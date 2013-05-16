@@ -27,7 +27,9 @@ public class PatientCarePlanValidator implements Validator{
 			errors.rejectValue("startDate", "", "date is incorrect");
 			errors.rejectValue("endDate", "", "date is incorrect");
 		}
-		if(!errors.hasErrors() && patientCarePlan.getStartDate().before(new Date())){
+		Date yesterday = new Date();
+		yesterday.setTime(yesterday.getTime() - 24 * 60 * 60 * 1000);
+		if(!errors.hasErrors() && patientCarePlan.getStartDate().before(yesterday)){
 			errors.rejectValue("startDate","","start date is incorrect");
 		}
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import pl.agh.edu.carecenter.server.domain.Activity;
 import pl.agh.edu.carecenter.server.domain.ActivityCategory;
+import pl.agh.edu.carecenter.server.domain.Alarm;
 import pl.agh.edu.carecenter.server.domain.CarePlan;
 import pl.agh.edu.carecenter.server.domain.PatientCarePlan;
 import pl.agh.edu.carecenter.server.exceptions.CategoryDoesNotExist;
@@ -19,5 +20,8 @@ public interface DoctorService {
 	List<CarePlan> listPossibleCarePlans(Integer patientId);
 	List<CarePlan> listAssignedCarePlans(Integer patientId);
 	void assignCarePlan(PatientCarePlan patientCarePlan, Integer patientId);
+	void removeAlarm(Integer alarmId);
+	List<Alarm> listAlarms();
+	boolean isAbleToRemoveAlarm(String username, Integer alarmId);
 
 }

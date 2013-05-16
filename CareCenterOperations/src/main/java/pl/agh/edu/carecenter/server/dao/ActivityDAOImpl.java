@@ -37,7 +37,6 @@ public class ActivityDAOImpl extends GenericDAOImpl<Activity> implements Activit
 	public List<ActivityCategory> listCategories(boolean populateActivities) {
 		List<ActivityCategory> categoryList = 
 				(List<ActivityCategory>) super.list(ActivityCategory.class);
-		
 		if(populateActivities)
 			for(ActivityCategory category : categoryList){
 				Hibernate.initialize(category.getActivityList());

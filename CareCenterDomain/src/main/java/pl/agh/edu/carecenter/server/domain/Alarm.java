@@ -1,5 +1,7 @@
 package pl.agh.edu.carecenter.server.domain;
 
+import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,6 +38,28 @@ public class Alarm {
 		this.description = description;
 	}
 	
+	@Basic
+	private String location;
+	
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
+	@Basic
+	private Date date;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@ManyToOne(targetEntity = Patient.class, fetch = FetchType.EAGER)
 	private Patient patient;
 

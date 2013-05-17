@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Table
@@ -81,15 +82,40 @@ public class Report {
 	}
 	
 	@Basic
-	private Integer done;
+	private Boolean done;
 
-	public Integer getDone() {
+	public Boolean getDone() {
 		return done;
 	}
 
-	public void setDone(Integer done) {
+	public void setDone(Boolean done) {
 		this.done = done;
 	}
+
+
+	@Transient
+	private Integer carePlanId;
+
+	public Integer getCarePlanId() {
+		return carePlanId;
+	}
+
+	public void setCarePlanId(Integer carePlanId) {
+		this.carePlanId = carePlanId;
+	}
+	
+	@Transient
+	private Integer activityId;
+
+	public Integer getActivityId() {
+		return activityId;
+	}
+
+	public void setActivityId(Integer activityId) {
+		this.activityId = activityId;
+	}
+	
+	
 	
 	
 	

@@ -11,6 +11,7 @@ import pl.agh.edu.carecenter.server.dao.ActivityDAO;
 import pl.agh.edu.carecenter.server.dao.AlarmDAO;
 import pl.agh.edu.carecenter.server.dao.CarePlanDAO;
 import pl.agh.edu.carecenter.server.dao.DoctorDAO;
+import pl.agh.edu.carecenter.server.dao.ReportDAO;
 import pl.agh.edu.carecenter.server.domain.Account;
 import pl.agh.edu.carecenter.server.domain.Activity;
 import pl.agh.edu.carecenter.server.domain.ActivityCategory;
@@ -18,6 +19,7 @@ import pl.agh.edu.carecenter.server.domain.Alarm;
 import pl.agh.edu.carecenter.server.domain.CareGroup;
 import pl.agh.edu.carecenter.server.domain.CarePlan;
 import pl.agh.edu.carecenter.server.domain.PatientCarePlan;
+import pl.agh.edu.carecenter.server.domain.Report;
 import pl.agh.edu.carecenter.server.exceptions.AccountNotFound;
 import pl.agh.edu.carecenter.server.exceptions.CategoryDoesNotExist;
 
@@ -38,6 +40,9 @@ public class DoctorServiceImpl implements DoctorService{
 	
 	@Autowired
 	private AccountDAO accountDAO;  
+	
+	@Autowired
+	private ReportDAO reportDao;
 	
 		
 	@Override
@@ -117,6 +122,11 @@ public class DoctorServiceImpl implements DoctorService{
 			return false; 
 		}
 		return false;
+	}
+
+	@Override
+	public List<CarePlan> listPlanReports(Integer patientId) {
+		return reportDao.listPlanReports(patientId);
 	}
 	
 	

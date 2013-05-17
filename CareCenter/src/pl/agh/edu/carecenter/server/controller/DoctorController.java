@@ -272,6 +272,13 @@ public class DoctorController {
 		return mav;
 	}
 	
+	@RequestMapping("/doctor/{patientId}/showReports")
+	public String showPatientsReports(@PathVariable Integer patientId, Map<String,Object> map){
+		
+		map.put("planList", doctorService.listPlanReports(patientId)); 
+		return "showReports";
+	}
+	
 	@RequestMapping("/doctor/removeAlarm/{alarmId}")
 	public String removeAlarm(@PathVariable Integer alarmId){
 		

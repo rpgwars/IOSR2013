@@ -30,6 +30,10 @@ public class Activity {
 	public void setReportList(List<Report> reportList) {
 		this.reportList = reportList;
 	}
+	
+	public void addReport(Report report){
+		reportList.add(report);
+	}
 
 
 	@ManyToOne(targetEntity = ActivityCategory.class, fetch = FetchType.EAGER)

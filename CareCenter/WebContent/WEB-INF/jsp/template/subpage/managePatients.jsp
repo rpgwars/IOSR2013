@@ -4,7 +4,7 @@
 
 <div class="mainContent">
 	
-	<div style="width: 500; overflow: hidden;">
+	<div style="width: 600; overflow: hidden;">
 		<div style="float: left; width: 500px">
 			<h2>Registered patients:</h2>
 			<br>
@@ -21,6 +21,7 @@
 			 				<td>${patient.street }</td>
 			 				<td>${patient.city }</td>
 			 				<td> <a href="${patient.id}/assignCarePlan.html">assign care plan</a></td>
+			 				<td> <a href="${patient.id}/showReports.html">show reports</a></td>
 			 			</tr>
 		 			</c:if>
 				</c:forEach>
@@ -31,7 +32,7 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<div style="width: 500px; overflow: hidden;">
+		<div style="width: 600px; overflow: hidden;">
 			<h2>Registered patients:</h2>
 			<br>
 			<c:choose>
@@ -47,6 +48,7 @@
 			 				<td>${patient.street }</td>
 			 				<td>${patient.city }</td>
 			 				<td> <a href="${patient.id}/assignCarePlan.html">assign care plan</a></td>
+			 				<td> <a href="${patient.id}/showReports.html">show reports</a></td>
 			 			</tr>
 		 			</c:if>
 				</c:forEach>

@@ -61,5 +61,9 @@
     <definition name="assignCarePlan" extends="mainTemplate">
         <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/assignCarePlan.jsp" />
     </definition>
+    
+    <definition name="showReports" extends="mainTemplate">
+        <put-attribute name="body" value="/WEB-INF/jsp/template/subpage/showReports.jsp" />
+    </definition>
  
 </tiles-definitions>

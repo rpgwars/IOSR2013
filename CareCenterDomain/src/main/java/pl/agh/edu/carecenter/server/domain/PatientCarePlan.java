@@ -30,6 +30,10 @@ public class PatientCarePlan {
 	public void setReportList(List<Report> reportList) {
 		this.reportList = reportList;
 	}
+	
+	public void addReport(Report report){
+		reportList.add(report);
+	}
 
 	@ManyToOne(targetEntity = Patient.class, fetch = FetchType.EAGER)
 	private Patient patient; 

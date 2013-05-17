@@ -7,6 +7,7 @@ import pl.agh.edu.carecenter.server.domain.ActivityCategory;
 import pl.agh.edu.carecenter.server.domain.Alarm;
 import pl.agh.edu.carecenter.server.domain.CarePlan;
 import pl.agh.edu.carecenter.server.domain.PatientCarePlan;
+import pl.agh.edu.carecenter.server.domain.Report;
 import pl.agh.edu.carecenter.server.exceptions.CategoryDoesNotExist;
 
 public interface DoctorService {
@@ -23,5 +24,6 @@ public interface DoctorService {
 	void removeAlarm(Integer alarmId);
 	List<Alarm> listAlarms();
 	boolean isAbleToRemoveAlarm(String username, Integer alarmId);
+	List<CarePlan> listPlanReports(Integer patientId);
 
 }

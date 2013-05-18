@@ -32,7 +32,7 @@ public class PatientServiceTest {
 		List<AndroidCarePlan> acp4 = patientService.getPatientsCarePlans("xxx");
 		
 		assertEquals(acp4.size(),0);
-		assertEquals(acp1.size(),1);
+		assertEquals(acp1.size(),3);
 		assertEquals(acp2.size(),1);
 		assertEquals(acp3.size(),1);
 		
@@ -41,8 +41,7 @@ public class PatientServiceTest {
 		assertEquals(androidCarePlan.getRemarks(),"prosze sie nie zmeczyc za bardzo");
 		assertEquals(androidCarePlan.getAndroindActivityList().size(),2);
 		assertEquals(androidCarePlan.getAndroindActivityList().get(1).getDescription(), "zimnej");
-		
-		
+	
 	}
 
 }

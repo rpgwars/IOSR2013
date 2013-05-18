@@ -1,5 +1,6 @@
 package pl.agh.edu.carecenter.server.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,7 +127,16 @@ public class DoctorServiceImpl implements DoctorService{
 
 	@Override
 	public List<CarePlan> listPlanReports(Integer patientId) {
-		return reportDao.listPlanReports(patientId);
+		List<CarePlan> result = reportDao.listPlanReports(patientId); 
+		
+		Iterator<CarePlan> iter = result.iterator();
+		while(iter.hasNext()){	
+			Iterator<PatientCarePlan> iter2 = iter.next().getPatientCarePlanList().iterator();
+			while(iter2.hasNext())
+				if(iter2.next().getPatient().getId() != patientId)
+					iter2.remove();
+		}
+		return result;
 	}
 	
 	

@@ -41,7 +41,6 @@ public class CarePlanTest {
 		
 		Patient patient = new Patient();
 		patient.setEmail("newPatient");
-		System.out.println(patient.getGroupId());
 		try {
 			accountService.saveAccount(patient);
 		} catch (AccountAlreadyExists e) {
@@ -51,16 +50,16 @@ public class CarePlanTest {
 		}
 		
 		
-		int nrOfPossibleCarePlans = 3; 
+		int nrOfAssignedCarePlans = 0; 
 		
 		for(CarePlan carePlan : doctorService.listPossibleCarePlans(patient.getId())){
-			assertEquals(doctorService.listAssignedCarePlans(patient.getId()).size(),3-nrOfPossibleCarePlans);
-			assertEquals(nrOfPossibleCarePlans, doctorService.listPossibleCarePlans(patient.getId()).size());
+			assertEquals(doctorService.listAssignedCarePlans(patient.getId()).size(),nrOfAssignedCarePlans);
+			assertEquals(3, doctorService.listPossibleCarePlans(patient.getId()).size());
 			PatientCarePlan patientCarePlan = new PatientCarePlan(); 
 			patientCarePlan.setCarePlanId(carePlan.getId());
 			doctorService.assignCarePlan(patientCarePlan, patient.getId());
+			nrOfAssignedCarePlans++; 
 			
-			nrOfPossibleCarePlans-=1;
 			
 		}
 		

@@ -113,6 +113,8 @@ public class PatientController {
 		AndroidReport androidReport2 = new AndroidReport();
 		AndroidReport androidReport3 = new AndroidReport(); 
 		AndroidReport androidReport4 = new AndroidReport();
+		AndroidReport androidReport5 = new AndroidReport(); 
+		AndroidReport androidReport6 = new AndroidReport();
 		
 		androidReport1.setCarePlanId(1);
 		androidReport1.setActivityId(2);
@@ -138,6 +140,18 @@ public class PatientController {
 		androidReport4.setDone(true);
 		androidReport4.setRemarks("ok");
 		
+		androidReport5.setCarePlanId(4);
+		androidReport5.setActivityId(1);
+		androidReport5.setDateOfReport(new Date());
+		androidReport5.setDone(true);
+		androidReport5.setRemarks("11111111");
+		
+		androidReport6.setCarePlanId(5);
+		androidReport6.setActivityId(2);
+		androidReport6.setDateOfReport(new Date());
+		androidReport6.setDone(true);
+		androidReport6.setRemarks("222222222222");
+		
 		
 		//patientCareplan -> patient id
 		//1 -> 8
@@ -153,6 +167,8 @@ public class PatientController {
 		patientService.saveReport(androidReport2);
 		patientService.saveReport(androidReport3);
 		patientService.saveReport(androidReport4);
+		patientService.saveReport(androidReport5);
+		patientService.saveReport(androidReport6);
 		
 		
 	}

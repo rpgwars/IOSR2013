@@ -1,8 +1,13 @@
 package pl.agh.edu.carecenter.server.dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -46,19 +51,19 @@ public class ReportDAOImp extends GenericDAOImpl<Report> implements ReportDAO{
 	public List<CarePlan> listPlanReports(Integer patientId) {
 		
 		Criteria planReportsCriteria = sessionFactory.getCurrentSession().createCriteria(CarePlan.class).
-				createAlias("patientCarePlanList", "pcpl").createAlias("pcpl.patient","pat").createAlias("pcpl.reportList", "rl").
-					createAlias("rl.activity", "ac");
+				createAlias("patientCarePlanList", "pcpl").createAlias("pcpl.patient","pat").add(Restrictions.eq("pat.id", patientId)).createAlias("pcpl.reportList", "rl").
+					createAlias("rl.activity", "ac").setFetchMode("patientCarePlanList", FetchMode.EAGER);
 		
 		
-		planReportsCriteria.add(Restrictions.eq("pat.id", patientId)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		planReportsCriteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		List<CarePlan> result = planReportsCriteria.list(); 
 		for(CarePlan carePlan : result){
-			Hibernate.initialize(carePlan.getPatientCarePlanList());
 			for(PatientCarePlan patientCarePlan : carePlan.getPatientCarePlanList())
 				Hibernate.initialize(patientCarePlan.getReportList());
 		}
-			
-		return result; 
+		
+		return result;
+		
 	}
 
 }

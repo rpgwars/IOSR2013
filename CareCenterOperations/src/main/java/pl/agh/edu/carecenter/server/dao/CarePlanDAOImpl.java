@@ -51,9 +51,9 @@ public class CarePlanDAOImpl extends GenericDAOImpl<CarePlan> implements CarePla
 	public List<CarePlan> listPossibleCarePlans(Integer patientId) {
 		
 		Criteria possibleCarePlanCriteria = sessionFactory.getCurrentSession().createCriteria(CarePlan.class);
-		List<Integer> patientsCarePlansIds = getPatientsCarePlans(patientId);
-		if(patientsCarePlansIds.size() != 0)
-			possibleCarePlanCriteria.add(Restrictions.not(Restrictions.in("id", patientsCarePlansIds)));
+		//List<Integer> patientsCarePlansIds = getPatientsCarePlans(patientId);
+		//if(patientsCarePlansIds.size() != 0)
+			//possibleCarePlanCriteria.add(Restrictions.not(Restrictions.in("id", patientsCarePlansIds)));
 		
 		List<CarePlan> possibleCarePlanList = possibleCarePlanCriteria.list();
 		

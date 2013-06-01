@@ -39,8 +39,10 @@ http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 			</user-service>
 		</authentication-provider>
 		
-	<authentication-provider user-service-ref="accountServiceImpl">
-		
+	<authentication-provider user-service-ref="accountServiceImpl" >
+		<password-encoder ref="passwordEncoder">
+			<salt-source user-property="username" />
+		</password-encoder>
 	</authentication-provider>
 		
 	</authentication-manager>

@@ -1,5 +1,8 @@
 package pl.agh.edu.carecenter.android.transferobject;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 /**
@@ -39,6 +42,7 @@ public class AndroidReport {
         this.carePlanId = carePlanId;
     }
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="CET")
     private Date dateOfReport;
 
     public Date getDateOfReport() {
@@ -60,11 +64,11 @@ public class AndroidReport {
     }
 
     private Boolean isDone;
-
+    @JsonProperty("isDone")
     public Boolean getDone() {
         return isDone;
     }
-
+    @JsonProperty("isDone")
     public void setDone(Boolean done) {
         isDone = done;
     }

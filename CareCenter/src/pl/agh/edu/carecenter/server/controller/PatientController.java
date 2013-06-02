@@ -81,27 +81,18 @@ public class PatientController {
 	}
 
 	@RequestMapping(value = "/patient/saveAlarm", method = RequestMethod.POST)
-	public HttpServletResponse saveAlarm(@RequestHeader("Authorization") String authInfor, AndroidPanicAlert panicAlert){
-		patientService.saveAlarm(panicAlert);
+    @ResponseBody
+	public HttpServletResponse saveAlarm(@RequestBody AndroidPanicAlert panicAlert){
+        patientService.saveAlarm(panicAlert);
 		return null; 
 	}
-	
-	// do testow
-	@RequestMapping("/patient/saveAlarm")
-	public void saveAlarm(){
-		AndroidPanicAlert panicAlert1 = new AndroidPanicAlert();
-		panicAlert1.setDescription("description 1");
-		panicAlert1.setLocation("location 1");
-		panicAlert1.setUsername("p1");
-		
-		AndroidPanicAlert panicAlert2 = new AndroidPanicAlert();
-		panicAlert2.setDescription("description 2");
-		panicAlert2.setLocation("location 2");
-		panicAlert2.setUsername("p2");
-		
-		patientService.saveAlarm(panicAlert1);
-		patientService.saveAlarm(panicAlert2);
-	}
+
+    @RequestMapping(value = "/patient/saveReport", method = RequestMethod.POST)
+    @ResponseBody
+    public HttpServletResponse saveReport(@RequestBody AndroidReport androidReport){
+        patientService.saveReport(androidReport);
+        return null;
+    }
 	
 	@RequestMapping("/patient/saveReport")
 	public void saveReport(){

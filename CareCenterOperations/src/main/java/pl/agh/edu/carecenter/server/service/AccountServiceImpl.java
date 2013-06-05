@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.dao.SaltSource;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -29,10 +31,18 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 	@Autowired 
 	private AccountDAO accountDao; 
 	
+	//@Autowired
+	//private SaltSource saltSource; 
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	
 	@Override
 	public void saveAccount(Account account) throws AccountAlreadyExists, GroupDoesNotExist{
 		
+		System.out.println("encoded password " + passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
+		account.setPassword(passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
 		accountDao.saveAccount(account);
 	}
 	
@@ -40,9 +50,14 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 	public void saveAccount(Account account, String login)
 			throws AccountAlreadyExists, GroupDoesNotExist, AccountNotFound {
 		
+		
+		
 		List<Integer> userGroups = listGroupIds(login);
-		if(userGroups.contains(account.getGroupId()))
+		if(userGroups.contains(account.getGroupId())){
+				System.out.println("encoded password " + passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
+				account.setPassword(passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
 				accountDao.saveAccount(account);
+		}
 		else
 			throw new GroupDoesNotExist();
 		

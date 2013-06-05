@@ -47,6 +47,9 @@
 	<context:component-scan base-package="pl.agh.edu.carecenter.server.dao"/>
 	<context:component-scan base-package="pl.agh.edu.carecenter.server.service"/>
 
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+ 	</bean>
+
 </beans>
     
     

@@ -5,26 +5,39 @@
 
     <div style="width: 1000">
 		
-		<h2>Alarms:</h2>
+		<h2>Alarms</h2>
 		<br>
 		<c:choose>
 			<c:when test="${not empty alarmList}">
-			<table>
-			<c:forEach items="${alarmList}" var="alarm" varStatus="status">
-				<tr>
-	 				<td>${status.index}</td>
-	 				<td>${alarm.date}</td>
-	 				<td>${alarm.patient.name}</td>
-	 				<td>${alarm.patient.surname}</td>
-	 				<td>${alarm.location}</td>
-	 				<td>${alarm.description}</td>
-	 				<td><a href="doctor/removeAlarm/${alarm.id}.html">remove</a></td>
-	 			</tr>
-			</c:forEach>
+			<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Patient</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${alarmList}" var="alarm" varStatus="status">
+
+                    <tr>
+                        <td>${status.index}</td>
+                        <td>${alarm.date}</td>
+                        <td>${alarm.patient.name} ${alarm.patient.surname}</td>
+                        <td>${alarm.location}</td>
+                        <td>${alarm.description}</td>
+                        <td><a href="doctor/removeAlarm/${alarm.id}.html">remove</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
 			</table>
 			</c:when>
 			<c:otherwise>
-				<h1>-----------</h1>
+				<h1>No alarms in database.</h1>
 			</c:otherwise>
 		</c:choose>
 	</div>

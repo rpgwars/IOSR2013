@@ -27,7 +27,7 @@ public class AndroidCarePlan {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="CET")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:MM", timezone="CET")
 	private Date startDate;
 
 	public Date getStartDate() {
@@ -38,7 +38,7 @@ public class AndroidCarePlan {
 		this.startDate = startDate;
 	}
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="CET")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:MM", timezone="CET")
 	private Date endDate;
 
 	public Date getEndDate() {

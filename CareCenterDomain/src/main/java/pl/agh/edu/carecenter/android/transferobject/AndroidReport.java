@@ -42,7 +42,7 @@ public class AndroidReport {
         this.carePlanId = carePlanId;
     }
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:00", timezone="CET")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd,HH:MM", timezone="CET")
     private Date dateOfReport;
 
     public Date getDateOfReport() {

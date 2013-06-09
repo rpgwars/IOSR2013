@@ -3,28 +3,33 @@
 
 
 <div class="mainContent">
-
-	
-	<div>
+    <div class="addInstanceForm">
+        <h2 class="actionHeader">Create new Group</h2>
 		<form:form method="post" commandName="group">
 			<div>
 				<ul>
-					<li><form:label path="groupName">Name: </form:label></li>
-					<li><form:input path="groupName"></form:input></li>
+					<li><form:input path="groupName" placeholder="Name"></form:input></li>
 					<li><form:errors path="groupName"></form:errors></li>
 				</ul>			
 			</div>
 			<hr>
-			<input type="submit" value="AddGroup"/>
+			<input class="btn btn-large btn-block btn-primary" type="submit" value="AddGroup"/>
 		</form:form>
-	</div>
-	<hr>
-	<div>
+    </div>
+    <div class="contentWrap">
+        <div class="instanceTableContainer">
 		<h2>Groups:</h2>
 		<br>
 		<c:choose>
 			<c:when test="${not empty groupList}">
-			<table>
+			<table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Group name</th>
+                </tr>
+                </thead>
+                <tbody>
 			<c:forEach items="${groupList}" var="group" varStatus="status">
 				<tr>
 				
@@ -32,6 +37,7 @@
 	 				<td>${group.groupName}</td>
 	 			</tr>
 			</c:forEach>
+                </tbody>
 			</table>
 			</c:when>
 			<c:otherwise>

@@ -2,19 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 
 <div class="mainContent">
-	<div>
+    <div class="addInstanceForm">
+        <h2 class="actionHeader">Create new activity</h2>
 		<form:form method="post" commandName="activity">
 			<div>
 				<ul>
-					<li><form:label path="activityName">Name: </form:label></li>
-					<li><form:input path="activityName"></form:input></li>
+					<li><form:input path="activityName" placeholder="Name"></form:input></li>
 					<li><form:errors path="activityName"></form:errors></li>
 				</ul>			
 			</div>
 			<div>
 				<ul>
-					<li><form:label path="description">Description: </form:label></li>
-					<li><form:textarea rows="5" cols="20" path="description"></form:textarea></li>
+					<li><form:textarea rows="5" cols="20" placeholder="Description" path="description"></form:textarea></li>
 					<li><form:errors path="description"></form:errors></li>
 				</ul>			
 			</div>
@@ -24,27 +23,32 @@
 				</form:select>
 			</div>
 			<hr>
-			<input type="submit" value="Add activity"/>
+			<input type="submit" class="btn btn-large btn-block btn-primary"  value="Add activity"/>
 		</form:form>
 	</div>
-	<hr>
-	<div>
+    <div class="contentWrap">
+        <div class="instanceTableContainer">
 		<h2>Activities:</h2>
 		<br>
 		<c:choose>
 			<c:when test="${not empty activityList}">
-			<table>
+			<table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                </tr>
+                </thead>
+                <tbody>
 			<c:forEach items="${activityList}" var="activity">
 				<tr>
 	 				<td>${activity.activityName}</td>
-	 				<td>
-	 					<textarea rows="5" cols="20" readonly="readonly">
-	 						 ${activity.description}
-	 					</textarea>
-	 				</td>
+	 				<td>${activity.description}</td>
 	 				<td>${activity.activityCategory.categoryName}</td>
 	 			</tr>
 			</c:forEach>
+                </tbody>
 			</table>
 			</c:when>
 			<c:otherwise>
@@ -52,4 +56,5 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
+    </div>
 </div>

@@ -3,8 +3,6 @@
 
 
 <div class="mainContent">
-
-	
 	<div class="addInstanceForm">
         <h2 class="actionHeader">Create new Doctor</h2>
 		<form:form method="post" commandName="doctor">

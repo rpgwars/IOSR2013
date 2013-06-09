@@ -236,16 +236,18 @@ fieldset {
 .addInstanceForm .actionHeader {
   margin: 0 0 20px 0;
 }
-.addInstanceForm form input {
+.addInstanceForm form input,
+.addInstanceForm textarea {
   width: 90%;
 }
 .contentWrap {
   padding: 0 10px 0 20px;
   float: left;
+  width: 65%;
 }
 .contentWrap .instanceTableContainer {
   float: left;
   clear: both;
-  width: 500px;
+  width: 100%;
   overflow: hidden;
 }

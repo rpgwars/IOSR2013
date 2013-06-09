@@ -43,23 +43,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<%=addDoctor%>">
                                 Doctors
-                                <span class="navbar-unread">1</span>
                             </a>
-                            <ul>
-                                <li><a href="<%=addDoctor%>">Add Doctor</a></li>
-                                <li><a href="#">List Doctors</a></li>
-                            </ul> <!-- /Sub menu -->
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="<%=addGroup%>">
                                 Groups
                             </a>
-                            <ul>
-                                <li><a href="<%=addGroup%>">Add Group</a></li>
-                                <li><a href="#">List Groups</a></li>
-                            </ul> <!-- /Sub menu -->
                         </li>
                         </security:authorize>
                         <security:authorize access="hasRole('ROLE_DOCTOR')">

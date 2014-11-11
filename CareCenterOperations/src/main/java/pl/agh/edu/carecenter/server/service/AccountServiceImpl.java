@@ -41,7 +41,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 	@Override
 	public void saveAccount(Account account) throws AccountAlreadyExists, GroupDoesNotExist{
 		
-		System.out.println("encoded password " + passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
+		
 		account.setPassword(passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
 		accountDao.saveAccount(account);
 	}
@@ -54,7 +54,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
 		
 		List<Integer> userGroups = listGroupIds(login);
 		if(userGroups.contains(account.getGroupId())){
-				System.out.println("encoded password " + passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
+				
 				account.setPassword(passwordEncoder.encodePassword(account.getPassword(), account.getEmail()));
 				accountDao.saveAccount(account);
 		}
